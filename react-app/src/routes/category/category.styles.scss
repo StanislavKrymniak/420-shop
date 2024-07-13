@@ -1,0 +1,28 @@
+.category_container {
+    padding: 150px 20px 0 20px;
+    .category_items{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-content: space-between;
+        flex: 0 0 33%;
+        .category_item {
+            padding-bottom: 0 10px 20px 10px;
+            .category_image {
+                padding-bottom: 10px;
+                img{
+                    height: 300px;
+                    width: 280px;
+                }
+            }
+            .category_text {
+                display: flex;
+                .name{
+                    padding-right: 10px;
+                }
+                
+            }
+        }
+    
+    }
+}

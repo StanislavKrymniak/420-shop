@@ -1,0 +1,17 @@
+.categories-preview_body {
+    padding: 20px;
+
+    .categories-preview_body_title {
+        cursor: pointer;
+        text-align: center;
+        padding: 0 0 10px 0;
+    }
+
+    .categories-preview_body_image{
+        cursor: pointer;
+    }
+    img{
+        height: 400px;
+        width: 500px;
+    }
+}

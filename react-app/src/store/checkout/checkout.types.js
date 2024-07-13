@@ -1,0 +1,3 @@
+export const CHECKOUT_ACTION_TYPES = {
+    SET_CHECKOUT_DETAILS: 'checkout/SET_CHECKOUT_DETAILS'
+}

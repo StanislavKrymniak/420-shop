@@ -3,6 +3,7 @@ import './cart.styles.scss';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { CartItems } from '../cart-items/cart-items.component';
 import { selectCartTotal } from '../../store/cart/cart.selector';
+import CheckoutForm from '../checkout-form/checkout-form';
 
 export const CartComponent = () => {
     const cartTotal = useSelector(selectCartTotal);
@@ -22,6 +23,9 @@ export const CartComponent = () => {
                 <CartItems key={`${cartItem.id}-${cartItem.size}`} cartItem={cartItem} />
             ))}
             <span className='total'>Total: ${cartTotal}</span>
+            <div className="cart-footer">
+                <CheckoutForm />
+            </div>
         </div>
     );
 };

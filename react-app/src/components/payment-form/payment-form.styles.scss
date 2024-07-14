@@ -1,0 +1,14 @@
+.payment_container {
+    padding: 200px 20px 0 20px;
+    .payment_info {
+        padding: 0 0 50px 0;    
+    }
+    .payment_order {
+        .payment_card {
+            width: 400px;
+        }
+        .payment_btn {
+            margin: 10px 0 0 0;
+        }
+    }
+}

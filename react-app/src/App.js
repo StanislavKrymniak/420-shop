@@ -6,7 +6,7 @@ import Shop from './routes/shop/shop.component';
 import Navigation from './routes/navigation/navigation.component';
 import Category from './routes/category/category.component';
 import CategoryItem from './routes/category-item/category-item.component';
-import PaymentForm from './components/payment-form/payment-form';
+import PaymentForm from './components/payment-form/payment-form.component';
 import { CartComponent } from './components/cart/cart.component';
 import store from './store/store'
 import { Provider } from 'react-redux';

@@ -1,22 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCheckoutDetails } from '../../store/checkout/checkout.selector';
-import { CardElement,useStripe, useElements } from '@stripe/react-stripe-js';
+import { CardElement } from '@stripe/react-stripe-js';
 import './payment-form.styles.scss'
 
 
 export const PaymentForm = () => {
   const checkoutDetails = useSelector(selectCheckoutDetails);
-  const stripe = useStripe()
-  const elements = useElements()
-  const paymentHandler = async (e) => {
-    e.preventDefault()
-    if(!stripe || !elements) {
-      return;
-    }
 
-    
-  }
 
 
   return (

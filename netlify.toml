@@ -1,0 +1,4 @@
+[build]
+  base = "react-app"
+  command = "yarn build"
+  publish = "react-app/build"

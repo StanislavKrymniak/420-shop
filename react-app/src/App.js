@@ -8,13 +8,11 @@ import Category from './routes/category/category.component';
 import CategoryItem from './routes/category-item/category-item.component';
 import PaymentForm from './components/payment-form/payment-form.component';
 import { CartComponent } from './components/cart/cart.component';
-import store from './store/store'
-import { Provider } from 'react-redux';
+import SignIn from './routes/sign-in/sign-in.component';
 
 
 function App() {
   return (
-    <Provider store={store}>
       <Routes>
         <Route path='/' element={<Navigation />}>
           <Route index element={<Home />} />
@@ -22,10 +20,10 @@ function App() {
           <Route path='shop/:category' element={<Category />} />
           <Route path='shop/:category/:productId' element={<CategoryItem />} />
           <Route path='/cart' element={<CartComponent />}/>
+          <Route path='/sign-in' element={<SignIn />} />
           <Route path='/payment' element={<PaymentForm />} />
       </Route>
     </Routes>
-    </Provider>
   );
 }
 

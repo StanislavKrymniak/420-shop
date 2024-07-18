@@ -9,10 +9,15 @@ export const Navigation = () => {
   return (
       <div className="navigation_container">
         <div className={`navigation_body ${isHomePage ? 'home' : 'not-home'}`}>
-          <div className="navigation_links">
-            <div className="navigation_shop"><Link to='/shop'>Каталог</Link></div>
-            <div className="navigation_label"><Link to='/'>420</Link></div>
-            <div className="naviagation_cart"><Link to='/cart'><img src={cartIcon} alt="" /></Link></div>
+          <div className="navigation_wrapper">
+            <div className="navigation_links">
+              <div className="navigation_shop"><Link to='/shop'>Каталог</Link></div>
+              <div className="navigation_label"><Link to='/'>420</Link></div>
+              <div className="navigation_cart"><Link to='/cart'><img src={cartIcon} alt="" /></Link></div>
+            </div>
+            <div className="navigation_link">
+                <div className="navigation_sign-in"><Link to='/sign-in'>Sign-In</Link></div>
+            </div>
           </div>
         </div>
         <Outlet />

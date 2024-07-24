@@ -1,8 +1,9 @@
 .home-container {
     .home-header {
         height: 880px;
-        width: 100%;
+        min-width: 100%;
         background-image: url('../../assets/main.svg');
+        background-size: cover;
         background-position: center;
 
 

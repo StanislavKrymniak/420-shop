@@ -10,7 +10,7 @@ import { selectCartItems } from '../../store/cart/cart.selector';
 
 const CategoryItem = () => {
   const { category, productId } = useParams();
-  const categoryData = SHOP_DATA[category.toLowerCase()];
+  const categoryData = SHOP_DATA.find(cat => cat.title.toLowerCase() === category.toLowerCase());
   const product = categoryData?.items.find((item) => item.id === parseInt(productId));
   const cartItems = useSelector(selectCartItems)
   const [selectedSize, setSelectedSize] = useState('XS')

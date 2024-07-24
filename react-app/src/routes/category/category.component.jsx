@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 export const Category = () => {
     const {category} = useParams();
-    const clothes = SHOP_DATA[category.toLowerCase()] || null;
+    const clothes = SHOP_DATA.find(cat => cat.title.toLowerCase() === category.toLowerCase()) || null;
     if (!clothes) {
         return <div>Category not found</div>;
       }  
@@ -33,3 +33,4 @@ export const Category = () => {
 
 
 export default Category
+

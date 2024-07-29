@@ -1,6 +1,8 @@
 import CategoriesPreview from "../categories-preview/categories-preview.component";
 import './categories.styles.scss'
-
+import { useSelector } from "react-redux";
+import { selectCategoriesIsLoading } from "../../store/categories/categories.selector";
+import Spinner from "../spinner/spinner.component";
 
 
 const  categories = [
@@ -37,13 +39,20 @@ const  categories = [
 ]
 
 export const Categories = () => {
-
+    const isLoading = useSelector(selectCategoriesIsLoading)
     return (
-        <div className="categories_container">
-            {categories.map((category) => (
-                <CategoriesPreview key={category.id} category = {category} />
-            ))}
-        </div>
+        <>
+        {
+            isLoading ? (<Spinner/>) :
+             (
+                <div className="categories_container">
+                {categories.map((category) => (
+                    <CategoriesPreview key={category.id} category = {category} />
+                ))}
+            </div>
+            )
+        }
+        </>
     )
 }
 

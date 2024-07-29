@@ -1,10 +1,11 @@
-import {  signInWithGooglePopup,createUserDocumentFromAuth,signInUserWithEmailAndPassword} from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
 import { useState } from "react";
 import './sign-in.styles.scss'
 import FormInput from "../form-input/form-input.component";
 import { Button_Type_Classes } from "../button/button.component";
-
+import { useDispatch } from "react-redux";
+import { emailSignInStart } from "../../store/user/user.action";
+import { googleSignInStart } from "../../store/user/user.action";
 const defaultFormFields = {
     email: '',
     password: ''
@@ -12,6 +13,7 @@ const defaultFormFields = {
 
 export const SignIn = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
+    const dispatch = useDispatch()
     const { email, password} = formFields;
     const resetFormFields = () => {
         setFormFields(defaultFormFields)
@@ -22,18 +24,29 @@ export const SignIn = () => {
         setFormFields({...formFields, [name]: value})
     }
 
-    const logGoogleUser = async () => {
-        await signInWithGooglePopup()
-    }
+    const signInWithGoogle = async () => {
+        console.log('Dispatching googleSignInStart');
+        dispatch(googleSignInStart())
+    };
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
         try {
-            const user = await signInUserWithEmailAndPassword(email, password)
-            resetFormFields()
-        } catch (error) {
-            console.log('invalid email or password',error)
+            dispatch(emailSignInStart(email, password))
+            resetFormFields();
+        }
+        catch(error) {
+            switch (error.code) {
+                case 'auth/wrong-password':
+                    alert('incorrect password for email');
+                    break;
+                case 'auth/user-not-found':
+                    alert('no user associated with this email');
+                    break;
+                default:
+                    console.log(error)
+            }
         }
     }
 
@@ -60,7 +73,7 @@ export const SignIn = () => {
                 />
                 <div className="buttons-container">
                     <Button type="submit">Sign In</Button>   
-                    <Button type='button' buttonType={Button_Type_Classes.google} onClick={logGoogleUser}>Google sign in</Button>
+                    <Button type='button' buttonType={Button_Type_Classes.google} onClick={signInWithGoogle}>Google sign in</Button>
                 </div>
             </form>
         </div>

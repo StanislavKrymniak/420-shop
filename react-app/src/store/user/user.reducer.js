@@ -11,8 +11,6 @@ export const userReducer = (state=INITIAL_STATE, action) => {
 
 
     switch(type) {
-
-        /*
         case USER_ACTION_TYPES.SIGN_IN_SUCCES:
             return {
                 ...state,
@@ -27,13 +25,4 @@ export const userReducer = (state=INITIAL_STATE, action) => {
         default:
             return state;
         }
-            */
-        case USER_ACTION_TYPES.SET_CURRENT_USER:
-            return {
-                ...state,
-                currentUser: payload
-            }
-        default:
-            return state
-    }
 }

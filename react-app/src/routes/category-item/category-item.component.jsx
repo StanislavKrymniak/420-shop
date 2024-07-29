@@ -1,17 +1,18 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import SHOP_DATA from "../../shop-data"
 import './category-item.styles.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../store/cart/cart.action';
 import { useState } from 'react';
 import { selectCartItems } from '../../store/cart/cart.selector';
+import { selectCategoriesMap } from "../../store/categories/categories.selector"
 
 
 const CategoryItem = () => {
   const { category, productId } = useParams();
-  const categoryData = SHOP_DATA.find(cat => cat.title.toLowerCase() === category.toLowerCase());
-  const product = categoryData?.items.find((item) => item.id === parseInt(productId));
+  const SHOP_DATA = useSelector(selectCategoriesMap)
+  const categoryData = SHOP_DATA[category.toLowerCase()];
+  const product = categoryData?.find((item) => item.id === parseInt(productId));
   const cartItems = useSelector(selectCartItems)
   const [selectedSize, setSelectedSize] = useState('XS')
   const handleSizeChange = (event) => {

@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom"
-import SHOP_DATA from "../../shop-data"
 import './category.styles.scss'
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { selectCategoriesMap } from "../../store/categories/categories.selector"
 
 
 
 export const Category = () => {
     const {category} = useParams();
-    const clothes = SHOP_DATA.find(cat => cat.title.toLowerCase() === category.toLowerCase()) || null;
+    const SHOP_DATA = useSelector(selectCategoriesMap)
+    const clothes = SHOP_DATA[category.toLowerCase()] || null;
     if (!clothes) {
         return <div>Category not found</div>;
       }  
@@ -15,7 +17,7 @@ export const Category = () => {
         <div className="category_container">
             <h2 className="category_title">{category.toUpperCase()}</h2>
             <div className="category_items">
-                {clothes.items.map((item) => (
+                {clothes.map((item) => (
                     <div key={item.id} className="category_item">
                         <Link className="category-image" to={`/shop/${category}/${item.id}`}>
                             <img src={item.imageUrl} alt={item.name} />

@@ -189,13 +189,12 @@ const SHOP_DATA = [
 ];
 
 
+/*
 
 
 
 
-
-
-/*export const SHOP_DATA = {
+export const SHOP_DATA = {
     hats: {
         title:'Hats',
         items: [
@@ -384,7 +383,7 @@ const SHOP_DATA = [
         ],
     },
 };
-*/
 
+*/
 
 export default SHOP_DATA;

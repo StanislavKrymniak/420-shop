@@ -2,8 +2,7 @@ import './sign-up.styles.scss'
 import { useState } from 'react'
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
-import { useDispatch } from 'react-redux'
-import { signUpStart } from '../../store/user/user.action'
+import { createAuthUserWithEmailAndPassword,createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils'
 
 export const defaultFormFields = {
     displayName: '',
@@ -13,35 +12,44 @@ export const defaultFormFields = {
 }
 
 export const SignUp = () => {    
-    const [formFields, setFormFields] = useState(defaultFormFields)
-    const {displayName, email, password , confirmPassword} = formFields
-    const dispatch = useDispatch()
+    const [formFields, setFormFields] = useState(defaultFormFields);
+    const { displayName, email, password, confirmPassword } = formFields;
+
     const resetFormFields = () => {
-        setFormFields(defaultFormFields)
-    }
-    
+        setFormFields(defaultFormFields);
+    };
+
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
+
         if (password !== confirmPassword) {
-            alert('passwords do not match')
-            return;
-        };
-        try {
-            dispatch(signUpStart(email,password,displayName))
-            resetFormFields()
-        } catch (error) {
-            if(error.code === 'auth/email-already-in-use') {
-                alert('email already in use')
-            }
-            console.log(error)
+        alert('passwords do not match');
+        return;
         }
-        
-    }
+
+        try {
+        const { user } = await createAuthUserWithEmailAndPassword(
+            email,
+            password
+        );
+
+        await createUserDocumentFromAuth(user, { displayName });
+        resetFormFields();
+        } catch (error) {
+        if (error.code === 'auth/email-already-in-use') {
+            alert('Cannot create user, email already in use');
+        } else {
+            console.log('user creation encountered an error', error);
+        }
+        }
+    };
 
     const handleChange = (event) => {
-        const {name , value} = event.target
-        setFormFields({...formFields, [name]: value})
-    }
+        const { name, value } = event.target;
+
+        setFormFields({ ...formFields, [name]: value });
+    };
+
     return (
         <div className="sign-up_container">
             <h2 className="sign-up_title">Don't have an account?</h2>

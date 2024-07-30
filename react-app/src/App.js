@@ -11,13 +11,21 @@ import { CartComponent } from './components/cart/cart.component';
 import { AuthComponent } from './routes/authentication/authentication.component';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { checkUserSession } from './store/user/user.action';
-
+import { onAuthStateChangedListener,createUserDocumentFromAuth} from './utils/firebase/firebase.utils';
+import { setCurrentUser } from './store/user/user.action';
 function App() {
   const dispatch = useDispatch()
+
   useEffect(() => {
-    dispatch(checkUserSession())
-  },[]) 
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  }, [dispatch]);
   return (
       <Routes>
         <Route path='/' element={<Navigation />}>

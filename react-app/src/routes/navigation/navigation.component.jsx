@@ -4,15 +4,12 @@ import './navigation.styles.scss'
 import cartIcon from '../../assets/cart-icon.svg'
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { signOutStart } from '../../store/user/user.action';
-
+import { signOutUser } from '../../utils/firebase/firebase.utils';
 export const Navigation = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const currentUser = useSelector(selectCurrentUser) 
-  const dispatch = useDispatch()
-  const signOutHandler = () => dispatch(signOutStart())
+  
   return (
       <div className="navigation_container">
         <div className={`navigation_body ${isHomePage ? 'home' : 'not-home'}`}>
@@ -25,7 +22,7 @@ export const Navigation = () => {
             {
               currentUser ? (
                 <div className="navigation_link">
-                  <div className="navigation_sign-out" onClick={signOutHandler}>Sign-Out</div>
+                  <div className="navigation_sign-out" onClick={signOutUser}>Sign-Out</div>
                 </div>
               ) : (
                 <div className="navigation_link">

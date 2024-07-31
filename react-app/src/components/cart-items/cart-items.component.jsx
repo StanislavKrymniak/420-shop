@@ -1,19 +1,14 @@
 import './cart-items.styles.scss'
-import { clearItemFromCart, addItemToCart, removeItemFromCart } from '../../store/cart/cart.action';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCartItems } from '../../store/cart/cart.selector';
+import { clearItemFromCart, addItemToCart, removeItemFromCart } from '../../store/cart/cart.reducer';
+import { useDispatch } from 'react-redux';
 
 export const CartItems = ({cartItem}) => {
     const {name, imageUrl, price, quantity, size} = cartItem;
-    const cartItems = useSelector(selectCartItems)
-
     const dispatch = useDispatch()
 
-    const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, cartItem))
-
-    const addItemHandler = () => dispatch(addItemToCart(cartItems, cartItem, size));
-
-    const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+    const clearItemHandler = () => dispatch(clearItemFromCart({  product: cartItem }));
+    const addItemHandler = () => dispatch(addItemToCart({  product: cartItem, size }));
+    const removeItemHandler = () => dispatch(removeItemFromCart({  product: cartItem }))
 
     return (
         <div className='cart-item_container'>

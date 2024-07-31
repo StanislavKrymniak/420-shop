@@ -3,7 +3,7 @@ import Categories from '../../components/categories/categories.component';
 import './shop.styles.scss'
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCategories } from '../../store/categories/categories.action';
+import { setCategories } from '../../store/categories/categories.reducer';
 import {getCategoriesAndDocuments} from '../../utils/firebase/firebase.utils'
 
 export const Shop = () => {

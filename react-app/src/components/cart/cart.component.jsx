@@ -31,6 +31,3 @@ export const CartComponent = () => {
 };
 
 
-/*
-const cartIte = cartItems.map((cartItem) => cartItem)
-    console.log(cartIte)*/

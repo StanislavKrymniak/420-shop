@@ -12,7 +12,7 @@ import { AuthComponent } from './routes/authentication/authentication.component'
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { onAuthStateChangedListener,createUserDocumentFromAuth} from './utils/firebase/firebase.utils';
-import { setCurrentUser } from './store/user/user.action';
+import { setCurrentUser } from './store/user/user.reducer';
 function App() {
   const dispatch = useDispatch()
 
@@ -21,6 +21,7 @@ function App() {
       if (user) {
         createUserDocumentFromAuth(user);
       }
+      console.log(setCurrentUser(user))
       dispatch(setCurrentUser(user));
     });
 

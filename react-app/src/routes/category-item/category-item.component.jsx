@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import './category-item.styles.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart } from '../../store/cart/cart.action';
+import { addItemToCart } from '../../store/cart/cart.reducer';
 import { useState } from 'react';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { selectCategoriesMap } from "../../store/categories/categories.selector"
@@ -19,7 +19,13 @@ const CategoryItem = () => {
     setSelectedSize(event.target.value);
   };
   const dispatch = useDispatch()
-  const addProductToCart = () => dispatch(addItemToCart(cartItems, product,selectedSize))
+  const addProductToCart = () => {
+    if (category.toLowerCase() === 'hats') {
+      dispatch(addItemToCart({ cartItems, product }));
+    } else {
+      dispatch(addItemToCart({ cartItems, product, size: selectedSize }));
+    }
+  };
 
   if (!product) {
     return <div>Product not found</div>;
@@ -60,14 +66,3 @@ export default CategoryItem;
 
 
 
-/*
-
-                {
-                    cartItems.length ? (cartItems.map((item) => (
-                        <CartItem key={item.id} cartItem={item} />
-                    ))) : (
-                        <EmptyMessage>Your cart is empty</EmptyMessage>
-                    )
-                }
-
-*/

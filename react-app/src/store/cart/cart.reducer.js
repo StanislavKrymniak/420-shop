@@ -28,11 +28,11 @@ export const cartSlice = createSlice({
     },
     removeItemFromCart(state, action) {
       const { product, size } = action.payload;
-      state.cartItems = removeCartItem( state.cartItems,{ ...product, size });
+      state.cartItems = removeCartItem( state.cartItems,{ ...product });
     },
     clearItemFromCart(state, action) {
       const {  product, size } = action.payload;
-      state.cartItems = clearCartItem( state.cartItems,{ ...product, size });
+      state.cartItems = clearCartItem( state.cartItems,{ ...product });
     }
 
     /*

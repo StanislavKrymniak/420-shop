@@ -1,4 +1,4 @@
-import { CHECKOUT_ACTION_TYPES } from "./checkout.types";
+import { createSlice } from "@reduxjs/toolkit";
 
 const CHECKOUT_INITIAL_STATE = {
     checkoutDetails: {}
@@ -6,16 +6,18 @@ const CHECKOUT_INITIAL_STATE = {
 
 
 
-export const checkoutReducer = (state = CHECKOUT_INITIAL_STATE, action = {}) => {
-    const { type, payload } = action;
 
-    switch (type) {
-        case CHECKOUT_ACTION_TYPES.SET_CHECKOUT_DETAILS:
-        return {
-            ...state,
-            checkoutDetails: payload,
-        };
-        default:
-        return state; 
+
+export const checkoutSlice = createSlice({
+    name:'checkout',
+    initialState: CHECKOUT_INITIAL_STATE,
+    reducers: {
+        setCheckoutDetails(state, action) {
+            state.checkoutDetails = action.payload
+        }
     }
-}
+})
+
+
+export const {setCheckoutDetails} = checkoutSlice.actions
+export const checkoutReducer = checkoutSlice.reducer

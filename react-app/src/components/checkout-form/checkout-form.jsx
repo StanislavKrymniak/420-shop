@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setCheckoutDetails } from '../../store/checkout/checkout.action';
+import { setCheckoutDetails } from '../../store/checkout/checkout.reducer';
 import './checkout-form.scss';
 
 const CheckoutForm = () => {

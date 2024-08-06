@@ -23,7 +23,7 @@ export function* isUserAuthenticated() {
     try {
         const userAuth = yield call(getCurrentUser)
         if(!userAuth) {
-            return console.log('error')
+            return console.log('user is not authenticated')
         }
         yield call(getSnapshotFromUserAuth, userAuth)
     } catch (error) {
@@ -33,7 +33,6 @@ export function* isUserAuthenticated() {
 
 export function* signInWithGoogle() {
     try {
-        console.log('signInWithGoogle saga started');
         const {user} = yield call(signInWithGooglePopup)
         yield call(getSnapshotFromUserAuth, user)
     } catch (error) {
@@ -76,7 +75,6 @@ export function* onCheckUserSession() {
     yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated)
 }
 export function* onGoogleSignInStart() {
-    console.log('onGoogleSignInStart watcher saga triggered');
     yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
 export function* onEmailSignInStart() {

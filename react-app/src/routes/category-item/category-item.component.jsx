@@ -19,7 +19,12 @@ const CategoryItem = () => {
     setSelectedSize(event.target.value);
   };
   const dispatch = useDispatch()
-  const addProductToCart = () => dispatch(addItemToCart(cartItems, product,selectedSize))
+  const addProductToCart = () => {
+    if (product) {
+      const sizeToPass = category.toLowerCase() === 'hats' ? undefined : selectedSize;
+      dispatch(addItemToCart(cartItems, product, sizeToPass));
+    }
+  }
 
   if (!product) {
     return <div>Product not found</div>;

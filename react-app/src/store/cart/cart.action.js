@@ -9,19 +9,33 @@ export const addItemToCart = (cartItems, productToAdd, size) => {
 };
 
 const addCartItem = (cartItems, productToAdd, size) => {
+    if (!Array.isArray(cartItems)) {
+        console.error('cartItems is not an array:', cartItems);
+        return cartItems;
+    }
+    
+    // Determine if size should be excluded
+    const sizeKeyToUse = size !== undefined ? size : undefined;
+    
     const existingCartItem = cartItems.find(
-        (cartItem) => cartItem.id === productToAdd.id && cartItem.size === size
+        (cartItem) =>
+            cartItem.id === productToAdd.id &&
+            (cartItem.size === sizeKeyToUse || (cartItem.size === undefined && sizeKeyToUse === undefined))
     );
-
+    
     if (existingCartItem) {
         return cartItems.map((cartItem) =>
-            cartItem.id === productToAdd.id && cartItem.size === size
+            cartItem.id === productToAdd.id && cartItem.size === sizeKeyToUse
                 ? { ...cartItem, quantity: cartItem.quantity + 1 }
                 : cartItem
         );
     }
-
-    return [...cartItems, { ...productToAdd, quantity: 1, size }];
+    
+    // Exclude size from new items if size is undefined
+    const newItem = size !== undefined ? { ...productToAdd, quantity: 1, size } : { ...productToAdd, quantity: 1 };
+    
+    return [...cartItems, newItem];
+    
 };
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
@@ -57,3 +71,4 @@ const clearCartItem = (cartItems, cartItemToClear) => {
         (cartItem) => !(cartItem.id === cartItemToClear.id && cartItem.size === cartItemToClear.size)
     );
 };
+

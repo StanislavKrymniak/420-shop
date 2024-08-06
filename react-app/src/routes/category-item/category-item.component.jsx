@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import './category-item.styles.scss'
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +5,6 @@ import { addItemToCart } from '../../store/cart/cart.action';
 import { useState } from 'react';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { selectCategoriesMap } from "../../store/categories/categories.selector"
-
 
 const CategoryItem = () => {
   const { category, productId } = useParams();
@@ -19,7 +17,12 @@ const CategoryItem = () => {
     setSelectedSize(event.target.value);
   };
   const dispatch = useDispatch()
-  const addProductToCart = () => dispatch(addItemToCart(cartItems, product,selectedSize))
+  const addProductToCart = () => {
+    if (product) {
+      const sizeToPass = category.toLowerCase() === 'hats' ? undefined : selectedSize;
+      dispatch(addItemToCart(cartItems, product, sizeToPass));
+    }
+  }
 
   if (!product) {
     return <div>Product not found</div>;

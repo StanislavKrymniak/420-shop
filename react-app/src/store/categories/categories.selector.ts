@@ -1,6 +1,8 @@
 import { createSelector } from "reselect"
-
-const selectCategoriesReducer = (state) => state.categories
+import { CategoriesState } from "./categories.reducer"
+import { CategoryMap } from "./categories.types"
+import { RootState } from "../store"
+const selectCategoriesReducer = (state: RootState): CategoriesState => state.categories
 
 const selectCategories = createSelector(
     [selectCategoriesReducer],
@@ -10,7 +12,7 @@ const selectCategories = createSelector(
 
 export const selectCategoriesMap = createSelector( 
     [selectCategories],
-    (categories) => {
+    (categories): CategoryMap => {
         if (!Array.isArray(categories)) {
             console.error("categories is not an array");
             return {}; // Return an empty object if categories is not an array
@@ -20,7 +22,7 @@ export const selectCategoriesMap = createSelector(
             const {title, items} = category
             acc[title.toLowerCase()] = items
             return acc
-        },{})
+        },{} as CategoryMap)
     }
 )
 

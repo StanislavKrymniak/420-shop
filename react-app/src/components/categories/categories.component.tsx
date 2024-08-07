@@ -4,8 +4,14 @@ import { useSelector } from "react-redux";
 import { selectCategoriesIsLoading } from "../../store/categories/categories.selector";
 import Spinner from "../spinner/spinner.component";
 
+export type CategoriesType = {
+    id: number;
+    title: string;
+    imageURL: string;
+    route: string;
+}
 
-const  categories = [
+const  categories:CategoriesType[] = [
     {
     id: 1,
     title: 'Hats',

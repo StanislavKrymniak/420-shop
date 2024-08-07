@@ -1,10 +1,10 @@
-import { CartItem } from "./cart.types";
+import { CartItemType } from "./cart.types";
 import { setCartItems } from "./cart.action";
 import { AnyAction } from "redux-saga";
 
 
 export type CartState = {
-  readonly cartItems : CartItem[]
+  readonly cartItems : CartItemType[]
 }
 const CART_INITIAL_STATE : CartState = {
   cartItems: []

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, Outlet,useLocation } from 'react-router-dom';
 import './navigation.styles.scss'
 import cartIcon from '../../assets/cart-icon.svg'

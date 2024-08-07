@@ -3,7 +3,7 @@ import './cart.styles.scss';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { CartItems } from '../cart-items/cart-items.component';
 import { selectCartTotal } from '../../store/cart/cart.selector';
-import CheckoutForm from '../checkout-form/checkout-form';
+import CheckoutForm from '../checkout-form/checkout-form.component';
 
 export const CartComponent = () => {
     const cartTotal = useSelector(selectCartTotal);

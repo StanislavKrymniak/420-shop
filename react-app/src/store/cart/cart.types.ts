@@ -5,11 +5,13 @@ export enum CART_ACTION_TYPES  {
     SET_CART_TOTAL = 'cart/SET_CART_TOTAL'
 }
 
-export type CartItem = {
+export type CartItemType = {
     id: number
     price:number
     quantity: number
     size?: string
+    name: string
+    imageUrl: string
 }
 
 

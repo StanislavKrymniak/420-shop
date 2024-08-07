@@ -1,10 +1,10 @@
 import './sign-up.styles.scss'
-import { useState } from 'react'
+import { useState, FormEvent, ChangeEvent } from "react";
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
 import { useDispatch } from 'react-redux'
 import { signUpStart } from '../../store/user/user.action'
-
+import { AuthError, AuthErrorCodes } from 'firebase/auth';
 export const defaultFormFields = {
     displayName: '',
     email: '',
@@ -20,7 +20,7 @@ export const SignUp = () => {
         setFormFields(defaultFormFields)
     }
     
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (password !== confirmPassword) {
             alert('passwords do not match')
@@ -30,15 +30,14 @@ export const SignUp = () => {
             dispatch(signUpStart(email,password,displayName))
             resetFormFields()
         } catch (error) {
-            if(error.code === 'auth/email-already-in-use') {
-                alert('email already in use')
+            if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
+            } else {
+                console.log(error)
             }
-            console.log(error)
         }
-        
     }
 
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name , value} = event.target
         setFormFields({...formFields, [name]: value})
     }

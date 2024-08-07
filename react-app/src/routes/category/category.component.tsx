@@ -5,9 +5,13 @@ import { useSelector } from "react-redux"
 import { selectCategoriesMap } from "../../store/categories/categories.selector"
 
 
+export type CategoryRouteParams = {
+    category: string
+    productId: string
+}
 
 export const Category = () => {
-    const {category} = useParams();
+    const {category} = useParams<keyof CategoryRouteParams>() as CategoryRouteParams;
     const SHOP_DATA = useSelector(selectCategoriesMap)
     const clothes = SHOP_DATA[category.toLowerCase()] || null;
     if (!clothes) {

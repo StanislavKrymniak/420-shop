@@ -1,8 +1,12 @@
+import { CategoriesType } from '../categories/categories.component';
 import './categories-preview.styles.scss'
 import { useNavigate } from 'react-router-dom'
+import { FC } from 'react';
 
-
-export const CategoriesPreview = ({category}) => {
+type CategoriesProps = {
+    category: CategoriesType
+}
+export const CategoriesPreview: FC<CategoriesProps> = ({category}) => {
     const {title,imageURL} = category;
     const navigate = useNavigate()
     const onNavigateHandler = () => navigate(`/shop/${title.toLowerCase()}`)

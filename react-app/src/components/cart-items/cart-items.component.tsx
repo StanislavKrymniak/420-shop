@@ -2,8 +2,13 @@ import './cart-items.styles.scss'
 import { clearItemFromCart, addItemToCart, removeItemFromCart } from '../../store/cart/cart.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart.selector';
+import { FC } from 'react';
+import { CartItemType } from '../../store/cart/cart.types';
+type CartItemProps = {
+    cartItem: CartItemType
+}
 
-export const CartItems = ({cartItem}) => {
+export const CartItems: FC<CartItemProps> = ({cartItem}) => {
     const {name, imageUrl, price, quantity, size} = cartItem;
     const cartItems = useSelector(selectCartItems)
 
@@ -32,3 +37,5 @@ export const CartItems = ({cartItem}) => {
         </div>
     );
 }
+
+export default CartItems

@@ -7,12 +7,14 @@
         justify-content: space-between;
         flex: 0 0 33%;
         .category_item {
-            padding-bottom: 0 10px 20px 10px;
+            margin: 0 5px 20px 5px;
             .category_image {
                 padding-bottom: 10px;
-                img{
-                    height: 300px;
-                    width: 280px;
+                img {
+                    @media (max-width: 675px) {
+                        width: 250px;
+                        height: 300px;
+                    }
                 }
             }
             .category_text {
@@ -20,9 +22,22 @@
                 .name{
                     padding-right: 10px;
                 }
+                @media (max-width: 575px) {
+                    justify-content: center;
+                }
+            }
+            @media (max-width: 575px) {
+                flex:  1 1 100%;
+                text-align: center;
                 
             }
         }
-    
+    }
+
+    .category_title {
+        @media (max-width: 575px) {
+            text-align: center;
+        }
     }
 }
+

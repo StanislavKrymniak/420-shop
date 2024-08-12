@@ -26,6 +26,33 @@
                 text-align: center;
             }
         }
+        @media (max-width: 550px) {
+            .header-info {
+                .title{
+                    font-size: 45px;
+                    
+                }
+                .subtitle {
+                    font-size: 20px;
+                    
+                }
+            }    
+        }
+        @media (max-width: 420px) {
+            .header-info {
+                .title{
+                    font-size: 37px;
+                    
+                }
+                .subtitle {
+                    font-size: 18px;
+                    
+                }
+            }    
+        }
+        @media (max-width: 620px) {
+            height: 750px;
+        }
     }
     .home-header::before{
         content: '';
@@ -83,11 +110,67 @@
             }
             .column_2 {
                 display: block;
-                .icon {
-                    
-                }
                 .text {
                     font-size: 28px;
+                }
+            }
+        }
+        @media (max-width: 940px) {
+            .home-details_columns {
+                .column_2 {
+                    
+                    .text {
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+        @media (max-width: 820px) {
+            .body {
+                padding: 150px 10px 90px 10px;
+            }
+            .home-details_columns {
+                
+                .column_2 {
+                    
+                    .text {
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+        @media (max-width: 700px) {
+            .home-details_columns {
+                flex-wrap: wrap;
+                .column_1 {
+                    width: 100%;
+                    justify-content: center;
+                    margin-right: 0;
+                    .image{
+                        img {
+                            height: 350px;
+                        }
+                    }
+                }
+                .column_2 {
+                    margin: 25px 0 0 0 ;
+                    .icon {
+                        
+                    }
+                    .text {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        @media (max-width: 700px) {
+            .home-details_columns {
+                
+                .column_2 {
+                    
+                    .text {
+                        font-size: 18px;
+                    }
                 }
             }
         }

@@ -22,18 +22,22 @@ export const CartItems: FC<CartItemProps> = ({cartItem}) => {
 
     return (
         <div className='cart-item_container'>
-            <div className='cart-item_image'>
-                <img src={imageUrl} alt={`${name}`} />
+            <div className="cart-item_column_1">
+                <div className='cart-item_image'>
+                    <img src={imageUrl} alt={`${name}`} />
+                </div>
             </div>
-            <span className='cart-item_name'>{name}</span>
-            <div className='cart-item_quantity'>
-                <div className='arrow' onClick={removeItemHandler}>&#10094;</div>
-                <span className='value'>{quantity}</span>
-                <div className="arrow" onClick={addItemHandler}>&#10095;</div>
+            <div className="cart-item_column_2">
+                <span className='cart-item_name'>{name}</span>
+                <div className='cart-item_quantity'>
+                    <div className='arrow' onClick={removeItemHandler}>&#10094;</div>
+                    <span className='value'>{quantity}</span>
+                    <div className="arrow" onClick={addItemHandler}>&#10095;</div>
+                </div>
+                <div className='size'>{size}</div>
+                <span className='price'>{price}$</span>
+                <div className="remove-button" onClick={clearItemHandler}>&#10005;</div>
             </div>
-            <span className='size'>{size}</span>
-            <span className='price'>{price}</span>
-            <div className="remove-button" onClick={clearItemHandler}>&#10005;</div>
         </div>
     );
 }

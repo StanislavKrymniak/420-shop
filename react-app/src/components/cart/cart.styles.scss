@@ -1,6 +1,6 @@
 .cart-container {
     padding: 200px 0 0 0 ;
-    width: 55%;
+    width: 70%;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -21,12 +21,23 @@
         border-bottom: 1px solid darkgrey;
 
         .header-block {
-            text-transform: capitalize;
-            width: 23%;
-
-            &:last-child {
-                width: 8%;
+            //text-transform: capitalize;
+            &:first-child{
+                padding-left: 70px;
+                padding-right: 20px;
             }
         }
+    }
+    @media (max-width: 900px) {
+        .total {
+            font-size: 32px;
+        }
+    }
+    @media (max-width: 850px) {
+        .cart-header {
+            display: none;
+        }
+    }
+    @media (max-width: 530px) {
     }
 }

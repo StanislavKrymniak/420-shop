@@ -16,16 +16,18 @@ export const Category = () => {
     const clothes = SHOP_DATA[category.toLowerCase()] || null;
     if (!clothes) {
         return <div>Category not found</div>;
-      }  
+    }  
     return (
         <div className="category_container">
             <h2 className="category_title">{category.toUpperCase()}</h2>
             <div className="category_items">
                 {clothes.map((item) => (
                     <div key={item.id} className="category_item">
-                        <Link className="category-image" to={`/shop/${category}/${item.id}`}>
-                            <img src={item.imageUrl} alt={item.name} />
-                        </Link>
+                        <div className="category_image">
+                            <Link to={`/shop/${category}/${item.id}`}>
+                                <img src={item.imageUrl} alt={item.name} />
+                            </Link>
+                        </div>
                         <div className="category_text">
                             <div className="category_text name">{item.name}</div>
                             <div className="category_text price">{item.price}$</div>

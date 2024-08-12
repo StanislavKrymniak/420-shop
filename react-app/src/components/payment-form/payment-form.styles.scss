@@ -10,5 +10,10 @@
         .payment_btn {
             margin: 10px 0 0 0;
         }
+        @media (max-width: 455px) {
+            .payment_card {
+                width: 300px;
+            }
+        }
     }
 }

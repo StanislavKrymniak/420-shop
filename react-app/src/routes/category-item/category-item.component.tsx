@@ -39,7 +39,7 @@ const CategoryItem = () => {
           </div>
           <div className='category-item_text'>Price: ${product.price}</div>
         </div>
-          <div className="category-item_cloumn_2">
+        <div className="category-item_cloumn_2">
           {category.toLowerCase() !== 'hats' && (
             <>
               <h2 className="category-item_choose">Size:</h2>
@@ -53,7 +53,7 @@ const CategoryItem = () => {
               </select>
             </>
           )}
-            <button className="category-item_button" onClick={addProductToCart}>Add to Cart</button>
+          <button className="category-item_button" onClick={addProductToCart}>Add to Cart</button>
         </div>
       </div>
     </div>

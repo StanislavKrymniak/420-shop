@@ -32,7 +32,6 @@ export const Navigation = () => {
                 </div>
               )
             }
-            
           </div>
         </div>
         <Outlet />

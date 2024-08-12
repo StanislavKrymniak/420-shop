@@ -39,7 +39,8 @@
             }
             .navigation_link {
                 position: absolute;
-                right: 50px;
+                right: 10px;
+                top: 5px;
                 font-size: 20px;
                 .navigation_sign-in {
                     a {
@@ -51,6 +52,25 @@
                     cursor: pointer;
                     text-decoration: none;
                     color: #fff;
+                }
+            }
+            @media (max-width: 400px) {
+                
+                .navigation_links {
+    
+                    .navigation_label {
+                        font-size: 30px;
+                    }
+                    .navigation_shop {
+                        font-size: 15px;
+                    }
+    
+                    .navigation_cart {
+                        img {
+                            width: 25;
+                            height:20px;
+                        }
+                    }
                 }
             }
         }
@@ -65,5 +85,11 @@
         background-repeat: no-repeat; // Ensure the image doesn't repeat
         background-size: cover; // Adjust the size of the image to fit within the container
         bottom: 0;
+        @media (max-width: 820px) {
+            height: 700px;
+        }
+        @media (max-width: 620px) {
+            height: 500px;
+        }
     }
 }

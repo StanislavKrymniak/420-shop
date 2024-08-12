@@ -4,12 +4,25 @@
         display: flex;
         flex: 1 1 50%;
         align-items: center;
+        .category-item_column_1{
+            margin-right: 100px;
+        }
     }
-    .category-item_column_1{
-        margin-right: 100px;
-    }
+    
     .category-item_button {
         margin-left: 20px;
     }
-
+    @media (max-width: 600px) {
+        .category-item_columns {
+            flex-wrap: wrap;
+            .category-item_column_1{
+                .category-item_image {
+                    img {
+                        height: 300px;
+                        width: 250px;
+                    }
+                }
+            }
+        }
+    }
 }

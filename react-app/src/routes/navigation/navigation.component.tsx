@@ -35,7 +35,6 @@ export const Navigation = () => {
           </div>
         </div>
         <Outlet />
-        <div className="navigation_footer"></div>
       </div>
   );
 };

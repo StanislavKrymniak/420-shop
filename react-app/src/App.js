@@ -27,8 +27,8 @@ function App() {
           <Route path='/cart' element={<CartComponent />}/>
           <Route path='/sign-in' element={<AuthComponent />} />
           <Route path='/payment' element={<PaymentForm />} />
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
   );
 }
 

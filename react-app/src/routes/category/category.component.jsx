@@ -9,7 +9,8 @@ import { selectCategoriesMap } from "../../store/categories/categories.selector"
 export const Category = () => {
     const {category} = useParams();
     const SHOP_DATA = useSelector(selectCategoriesMap)
-    const clothes = SHOP_DATA[category.toLowerCase()] || null;
+    const clothes = SHOP_DATA[category.toLowerCase()] || null
+    console.log(clothes)
     if (!clothes) {
         return <div>Category not found</div>;
       }  

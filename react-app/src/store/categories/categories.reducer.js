@@ -19,13 +19,6 @@ export const categoriesReducer = (state = CATEGORIES_INITIAL_STATE, action = {})
         default:
             return state;
     
-        /*case CATEGORIES_ACTION_TYPES.SET_CATEGORIES :
-            return {
-                ...state,
-                categories: payload,
-              };
-            default:
-              return state; 
-              */
+        
     }
 }

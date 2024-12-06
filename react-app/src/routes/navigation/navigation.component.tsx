@@ -10,6 +10,7 @@ export const Navigation = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const currentUser = useSelector(selectCurrentUser) 
+  console.log(currentUser)
   const dispatch = useDispatch()
   const signOutHandler = () => dispatch(signOutStart())
   return (
@@ -17,7 +18,7 @@ export const Navigation = () => {
         <div className={`navigation_body ${isHomePage ? 'home' : 'not-home'}`}>
           <div className="navigation_wrapper">
             <div className="navigation_links">
-              <div className="navigation_shop"><Link to='/shop'>Каталог</Link></div>
+              <div className="navigation_shop"><Link to='/shop'>Katalog</Link></div>
               <div className="navigation_label"><Link to='/'>420</Link></div>
               <div className="navigation_cart"><Link to='/cart'><img src={cartIcon} alt="" /></Link></div>
             </div>

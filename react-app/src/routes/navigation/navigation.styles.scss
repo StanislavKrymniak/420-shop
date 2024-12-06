@@ -2,25 +2,31 @@
     min-height: 100vh;
     width: 100%;
 
-
     .navigation_body {
         z-index: 2;
         position: absolute;
         width: 100%;
         height: 150px;
+        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
         &.home {
             background-color: transparent;
+            transform: translateY(0);
         }
-    
+
         &.not-home {
             background-color: black;
+            transform: translateY(-10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .navigation_wrapper {
             position: relative;
             height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
+
             .navigation_links {
                 height: 150px;
                 display: flex;
@@ -29,52 +35,73 @@
 
                 .navigation_label {
                     font-size: 40px;
+                    color: #fff;
+                    animation: fadeIn 0.5s ease-in-out;
                 }
 
                 a {
                     text-decoration: none;
                     margin: 0 20px;
                     color: #fff;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: #ffcc00;
+                        transform: scale(1.1);
+                    }
                 }
             }
+
             .navigation_link {
                 position: absolute;
                 right: 10px;
                 top: 5px;
                 font-size: 20px;
-                .navigation_sign-in {
-                    a {
+
+                .navigation_sign-in, .navigation_sign-out {
+                    a, span {
                         text-decoration: none;
                         color: #fff;
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+
+                        &:hover {
+                            color: #ffcc00;
+                            transform: translateY(-5px);
+                        }
                     }
                 }
-                .navigation_sign-out {
-                    cursor: pointer;
-                    text-decoration: none;
-                    color: #fff;
-                }
             }
+
             @media (max-width: 400px) {
-                
                 .navigation_links {
-    
                     .navigation_label {
                         font-size: 30px;
                     }
                     .navigation_shop {
                         font-size: 15px;
                     }
-    
+
                     .navigation_cart {
                         img {
-                            width: 25;
-                            height:20px;
+                            width: 25px;
+                            height: 20px;
                         }
                     }
                 }
             }
         }
     }
+}
 
-    
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

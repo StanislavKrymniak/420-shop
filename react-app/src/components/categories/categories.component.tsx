@@ -32,16 +32,16 @@ const  categories:CategoriesType[] = [
     },
     {
     id: 4,
-    title: 'Women',
-    imageURL: 'https://i.ibb.co/GCCy8t/womens.png',
+    title: 'Womens',
+    imageURL: 'https://i.ibb.co/qBcrsJg/white-vest.png',
     route: 'shop/women'
-    },
+    },/*
     {
     id: 5,
-    title: 'Men',
+    title: 'Mens',
     imageURL: 'https://i.ibb.co/R70vBrQ/men.png',
     route: 'shop/men'
-    }
+    }*/
 ]
 
 export const Categories = () => {

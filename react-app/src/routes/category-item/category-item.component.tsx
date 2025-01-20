@@ -11,12 +11,21 @@ const CategoryItem = () => {
   const { category, productId } = useParams<keyof CategoryRouteParams>() as CategoryRouteParams;;
   const SHOP_DATA = useSelector(selectCategoriesMap)
   const categoryData = SHOP_DATA[category.toLowerCase()];
-  const product = categoryData?.find((item) => item.id === parseInt(productId));
+
+  const product = categoryData?.find((item) => {
+    console.log("Checking item:", item);
+    return Number(item.id) === Number(productId);
+  });
   const cartItems = useSelector(selectCartItems)
   const [selectedSize, setSelectedSize] = useState('XS')
   const handleSizeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedSize(event.target.value);
   };
+  console.log("Category:", category);
+  console.log("Product ID:", productId);
+  console.log("SHOP_DATA:", SHOP_DATA);
+  console.log("Category Data:", categoryData);
+  console.log("Product:", product);
   const dispatch = useDispatch()
   const addProductToCart = () => {
     if (product) {

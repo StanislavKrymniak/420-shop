@@ -1,22 +1,29 @@
 import { CategoriesType } from '../categories/categories.component';
-import './categories-preview.styles.scss'
-import { useNavigate } from 'react-router-dom'
+import './categories-preview.styles.scss';
+import { Link } from 'react-router-dom';
 import { FC } from 'react';
 
 type CategoriesProps = {
-    category: CategoriesType
-}
-export const CategoriesPreview: FC<CategoriesProps> = ({category}) => {
-    const {title,imageURL} = category;
-    const navigate = useNavigate()
-    const onNavigateHandler = () => navigate(`/shop/${title.toLowerCase()}`)
+    category: CategoriesType;
+};
+
+export const CategoriesPreview: FC<CategoriesProps> = ({ category }) => {
+    const { title, imageURL } = category;
+    
     return (
-        <div className="categories-preview_body">
-            <div className="categories-preview_body_title" onClick={onNavigateHandler}>{title}</div>
-            <div className="categories-preview_body_image" onClick={onNavigateHandler}><img src={imageURL} alt="" /></div>
-        </div>
-    )
-}
+        <li className="categories-preview_body">
+            <Link 
+                to={`/shop/${title.toLowerCase()}`} 
+                className="categories-preview_link"
+                aria-label={`Przejdź do kategorii ${title}`}
+            >
+                <div className="categories-preview_body_title">{title}</div>
+                <div className="categories-preview_body_image">
+                    <img src={imageURL} alt={title} />
+                </div>
+            </Link>
+        </li>
+    );
+};
 
-
-export default CategoriesPreview;
+export default CategoriesPreview;;

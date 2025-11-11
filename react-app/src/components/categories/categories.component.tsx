@@ -50,12 +50,12 @@ export const Categories = () => {
         <>
         {
             isLoading ? (<Spinner/>) :
-             (
-                <div className="categories_container">
-                {categories.map((category) => (
-                    <CategoriesPreview key={category.id} category = {category} />
-                ))}
-            </div>
+            (
+                <ul className="categories_container">
+                    {categories.map((category) => (
+                        <CategoriesPreview key={category.id} category = {category} />
+                    ))}
+                </ul>
             )
         }
         </>

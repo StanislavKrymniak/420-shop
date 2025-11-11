@@ -1,15 +1,24 @@
 .categories-preview_body {
     padding: 20px;
+    list-style: none; 
+    margin: 0;
+
+    .categories-preview_link {
+        display: block; 
+        text-decoration: none;
+        color: inherit; 
+    }
 
     .categories-preview_body_title {
-        cursor: pointer;
+        cursor: pointer; 
         text-align: center;
         padding: 0 0 10px 0;
     }
 
     .categories-preview_body_image{
-        cursor: pointer;
+        cursor: pointer; 
     }
+
     img{
         height: 400px;
         width: 500px;

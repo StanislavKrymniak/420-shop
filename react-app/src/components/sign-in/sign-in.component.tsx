@@ -6,6 +6,7 @@ import { ButtonTypeClasses } from "../button/button.component";
 import { useDispatch } from "react-redux";
 import { emailSignInStart } from "../../store/user/user.action";
 import { googleSignInStart } from "../../store/user/user.action";
+
 const defaultFormFields = {
     email: '',
     password: ''
@@ -20,7 +21,6 @@ export const SignIn = () => {
     }
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name , value} = event.target
-        
         setFormFields({...formFields, [name]: value})
     }
 
@@ -41,8 +41,8 @@ export const SignIn = () => {
     }
 
     return (
-        <div className="sign-in_container">
-            <h2 className="sign-in_title">Already have an account?</h2>
+        <section className="sign-in_container" aria-labelledby="sign-in-title">
+            <h2 className="sign-in_title" id="sign-in-title">Already have an account?</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={handleSubmit} >
                 <FormInput
@@ -66,12 +66,8 @@ export const SignIn = () => {
                     <Button type='button' buttonType={ButtonTypeClasses.GOOGLE} onClick={signInWithGoogle}>Google sign in</Button>
                 </div>
             </form>
-        </div>
+        </section>
     )
 }
 
-
-
-export default SignIn
-
-
+export default SignIn;

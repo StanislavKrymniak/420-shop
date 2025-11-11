@@ -1,4 +1,4 @@
-.cart-item_container {
+tr.cart-item_container {
     width: 100%;
     display: flex;
     min-height: 200px;
@@ -7,20 +7,24 @@
     font-size: 20px;
     align-items: center;
 
-    .cart-item_column_2 {
+    td.cart-item_cell {
         display: flex;
-        flex: 1 1 100%;
-        justify-content: space-between;
+        align-items: center; 
+    }
+
+    .product-image {
+        width: auto;
     }
 
     .cart-item_image {
         height: 100%;
-        width: 100%;
+        width: auto;
         padding-right: 15px;
 
         img {
             width: 200px;
             height: 250px;
+            display: block;
         }
     }
 
@@ -29,6 +33,7 @@
     .size,
     .price {
         width: 20%;
+        padding-left: 10px; 
     }
 
     .cart-item_quantity {
@@ -37,6 +42,10 @@
 
         .arrow {
             cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
         }
 
         .value {
@@ -47,13 +56,16 @@
     .remove-button {
         padding-left: 12px;
         cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
     }
+
     @media (max-width: 950px) {
-        .cart-item_image {
-            img {
-                width: 180px;
-                height: 230px;
-            }
+        .cart-item_image img {
+            width: 180px;
+            height: 230px;
         }
         .cart-item_name,
         .cart-item_quantity,
@@ -62,46 +74,80 @@
             font-size: 17px;
         }
     }
+
+
     @media (max-width: 850px) {
-        .cart-item_column_1 {
+        display: grid; 
+        grid-template-columns: 120px 1fr; 
+        grid-template-rows: auto;
+        grid-gap: 5px 15px; 
+        padding: 15px 10px;
+        min-height: 0;
+
+        grid-template-areas: 
+            "image name"
+            "image quantity"
+            "image size"
+            "image price"
+            "remove remove"; 
+
+        td.cart-item_cell {
+            display: flex; 
+            align-items: center;
+            width: 100%; 
+            padding: 5px 0; 
+            font-size: 1rem;
+
+            &::before {
+                display: none; 
+            }
+        }
+        
+        .product-image {
+            grid-area: image; 
+            width: 120px;
+            height: 150px;
+            padding: 0;
+            margin: auto 0; 
+            
             .cart-item_image {
+                padding: 0;
                 img {
-                    width: 230px;
-                    height: 280px;
+                    width: 120px;
+                    height: 150px;
                 }
             }
         }
-        .cart-item_column_2 {
-            display: block;
-            .cart-item_name,
-            .cart-item_quantity,
-            .size,
-            .price {
-                font-size: 20px;
-            }
-            .cart-item_name{
-                font-size: 20px;
-            }  
-            .cart-item_quantity {
-                padding: 0;
-            }
+        
+        .cart-item_name { 
+            grid-area: name;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .cart-item_quantity { 
+            grid-area: quantity; 
+            padding: 0;
+        }
+        .size { 
+            grid-area: size; 
+        }
+        .price { 
+            grid-area: price; 
+            font-weight: bold;
+        }
+        
+        .remove-button-cell {
+            grid-area: remove;
+            padding: 0;
+            margin-top: 10px;
             .remove-button {
-                padding: 0;
+                width: 100%;
+                justify-content: center;
+                padding: 8px;
+                background-color: #f1f1f1;
+                border: 1px solid #ccc;
+                border-radius: 5px;
             }
         }
-    }
-    @media (max-width: 530px) {
-        flex-wrap: wrap;
-
-        .cart-item_column_1{
-            .cart-item_image {
-                padding: 0;
-                img {
-                    width: 200px;
-                    height: 250px;
-                }
-            }
-        }
-
     }
 }

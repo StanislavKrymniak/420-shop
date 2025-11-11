@@ -6,7 +6,6 @@
         background-size: cover;
         background-position: center;
 
-
         .header-info {
             z-index: 2;
             display: flex;
@@ -16,25 +15,25 @@
             justify-content: center;
             align-items: center;
 
-            .title{
+            .title {
                 font-size: 50px;
                 font-weight: bold;
                 text-align: center;
+                margin: 0; // Reset dla h1
             }
             .subtitle {
                 font-size: 25px;
                 text-align: center;
+                margin: 0; // Reset dla p
             }
         }
         @media (max-width: 550px) {
             .header-info {
                 .title{
                     font-size: 45px;
-                    
                 }
                 .subtitle {
                     font-size: 20px;
-                    
                 }
             }    
         }
@@ -42,11 +41,9 @@
             .header-info {
                 .title{
                     font-size: 37px;
-                    
                 }
                 .subtitle {
                     font-size: 18px;
-                    
                 }
             }    
         }
@@ -80,7 +77,12 @@
                 width: 100%;
                 display: flex;
                 justify-content: center;
-                flex-direction: column;                
+                flex-direction: column; 
+                
+                // Reset dla ul
+                list-style: none;
+                margin: 0;
+                padding: 0;
             }
             .about_block {
                 margin: 5px 0;
@@ -112,13 +114,13 @@
                 display: block;
                 .text {
                     font-size: 28px;
+                    margin: 0; // Reset dla p
                 }
             }
         }
         @media (max-width: 940px) {
             .home-details_columns {
                 .column_2 {
-                    
                     .text {
                         font-size: 25px;
                     }
@@ -130,9 +132,7 @@
                 padding: 150px 10px 90px 10px;
             }
             .home-details_columns {
-                
                 .column_2 {
-                    
                     .text {
                         font-size: 22px;
                     }
@@ -154,9 +154,7 @@
                 }
                 .column_2 {
                     margin: 25px 0 0 0 ;
-                    .icon {
-                        
-                    }
+                    
                     .text {
                         font-size: 20px;
                     }
@@ -165,9 +163,7 @@
         }
         @media (max-width: 700px) {
             .home-details_columns {
-                
                 .column_2 {
-                    
                     .text {
                         font-size: 18px;
                     }
@@ -175,4 +171,16 @@
             }
         }
     }
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }

@@ -12,10 +12,14 @@ export const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
     <div className="form-input_container">
       <input 
         className={`form-input ${hasValue ? 'not-empty' : ''}`} 
+        id={otherProps.name}
         {...otherProps} 
       />
       {label && (
-        <label className={`${hasValue ? 'shrink' : ''} form-input-label`}>
+        <label 
+          htmlFor={otherProps.name} 
+          className={`${hasValue ? 'shrink' : ''} form-input-label`}
+        >
           {label}
         </label>
       )}

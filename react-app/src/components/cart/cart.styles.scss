@@ -6,21 +6,41 @@
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    .total {
-        margin-top: 30px;
-        margin-left: auto;
-        justify-content: flex-end;
-        font-size: 36px;
+
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+
+        tfoot {
+            .total-label {
+                font-size: 36px;
+                text-align: right;
+                padding-top: 30px;
+                padding-right: 20px;
+                font-weight: bold;
+            }
+            .total {
+                font-size: 36px;
+                padding-top: 30px;
+                text-align: left;
+            }
+        }
     }
 
     .cart-header {
         width: 100%;
-        padding: 10px 0;
-        display: flex;
-        justify-content: space-between;
         border-bottom: 1px solid darkgrey;
 
+        tr {
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
         .header-block {
+            text-align: left;
+            font-weight: bold;
             //text-transform: capitalize;
             &:first-child{
                 padding-left: 70px;
@@ -28,16 +48,46 @@
             }
         }
     }
+
+    .cart-footer {
+        width: 100%;
+    }
+
     @media (max-width: 900px) {
-        .total {
+        .cart-table tfoot .total,
+        .cart-table tfoot .total-label {
             font-size: 32px;
         }
     }
+    
+    // ----- FIX TUTAJ -----
     @media (max-width: 850px) {
+        // Zmieniamy szerokość na 95%, aby wypełnić ekran mobilny
+        width: 95%;
+
         .cart-header {
-            display: none;
+            // Ukrywamy nagłówek tabeli na urządzeniach mobilnych (WCAG)
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
         }
     }
-    @media (max-width: 530px) {
-    }
+}
+
+// Klasa pomocnicza WCAG
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }

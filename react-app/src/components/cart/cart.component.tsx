@@ -10,23 +10,36 @@ export const CartComponent = () => {
     const cartItems = useSelector(selectCartItems);
 
     return (
-        <div className="cart-container">
-            <div className="cart-header">
-                <div className="header-block"><span>Product</span></div>
-                <div className="header-block"><span>Description</span></div>
-                <div className="header-block"><span>Quantity</span></div>
-                <div className="header-block"><span>Size</span></div>
-                <div className="header-block">Price</div>
-                <div className="header-block">Remove</div>
-            </div>
-            {cartItems.map((cartItem) => (
-                <CartItems key={`${cartItem.id}-${cartItem.size}`} cartItem={cartItem} />
-            ))}
-            <span className='total'>Total: ${cartTotal}</span>
-            <div className="cart-footer">
+        <main className="cart-container">
+            <h1 className="visually-hidden">Twój koszyk</h1>
+            <table className="cart-table">
+                <thead className="cart-header">
+                    <tr>
+                        <th className="header-block">Product</th>
+                        <th className="header-block">Description</th>
+                        <th className="header-block">Quantity</th>
+                        <th className="header-block">Size</th>
+                        <th className="header-block">Price</th>
+                        <th className="header-block">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cartItems.map((cartItem) => (
+                        <CartItems key={`${cartItem.id}-${cartItem.size}`} cartItem={cartItem} />
+                    ))}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan={4} className="total-label">Total:</td>
+                        <td colSpan={2} className='total'>${cartTotal}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <section className="cart-footer" aria-labelledby="checkout-heading">
+                <h2 id="checkout-heading" className="visually-hidden">Formularz płatności</h2>
                 <CheckoutForm />
-            </div>
-        </div>
+            </section>
+        </main>
     );
 };
-

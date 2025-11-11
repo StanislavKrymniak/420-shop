@@ -5,6 +5,7 @@ import Button from '../button/button.component'
 import { useDispatch } from 'react-redux'
 import { signUpStart } from '../../store/user/user.action'
 import { AuthError, AuthErrorCodes } from 'firebase/auth';
+
 export const defaultFormFields = {
     displayName: '',
     email: '',
@@ -12,26 +13,33 @@ export const defaultFormFields = {
     confirmPassword: ''
 }
 
-export const SignUp = () => {    
+export const SignUp = () => {   
     const [formFields, setFormFields] = useState(defaultFormFields)
+    const [error, setError] = useState<string | null>(null);
     const {displayName, email, password , confirmPassword} = formFields
     const dispatch = useDispatch()
+    
     const resetFormFields = () => {
         setFormFields(defaultFormFields)
     }
     
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+        setError(null);
+
         if (password !== confirmPassword) {
-            alert('passwords do not match')
+            setError('Passwords do not match');
             return;
         };
+
         try {
             dispatch(signUpStart(email,password,displayName))
             resetFormFields()
         } catch (error) {
             if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
+                setError('Email already in use');
             } else {
+                setError('An error occurred during sign up');
                 console.log(error)
             }
         }
@@ -39,13 +47,16 @@ export const SignUp = () => {
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name , value} = event.target
+        setError(null);
         setFormFields({...formFields, [name]: value})
     }
+    
     return (
-        <div className="sign-up_container">
-            <h2 className="sign-up_title">Don't have an account?</h2>
+        <section className="sign-up_container" aria-labelledby="sign-up-title">
+            <h2 className="sign-up_title" id="sign-up-title">Don't have an account?</h2>
             <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit} className="sign-up_form">
+                {error && <div role="alert" className="form-error">{error}</div>}
                 <FormInput
                     label="DisplayName" 
                     type="text" 
@@ -80,8 +91,8 @@ export const SignUp = () => {
                 />
                 <Button type="submit" >Sign Up</Button>
             </form>
-        </div>
+        </section>
     )
 }
 
-export default SignUp
+export default SignUp;

@@ -1,0 +1,107 @@
+.cart-item_container {
+    width: 100%;
+    display: flex;
+    min-height: 200px;
+    border-bottom: 1px solid darkgrey;
+    padding: 15px 0;
+    font-size: 20px;
+    align-items: center;
+
+    .cart-item_column_2 {
+        display: flex;
+        flex: 1 1 100%;
+        justify-content: space-between;
+    }
+
+    .cart-item_image {
+        height: 100%;
+        width: 100%;
+        padding-right: 15px;
+
+        img {
+            width: 200px;
+            height: 250px;
+        }
+    }
+
+    .cart-item_name,
+    .cart-item_quantity,
+    .size,
+    .price {
+        width: 20%;
+    }
+
+    .cart-item_quantity {
+        padding-left: 20px;
+        display: flex;
+
+        .arrow {
+            cursor: pointer;
+        }
+
+        .value {
+            margin: 0 10px;
+        }
+    }
+
+    .remove-button {
+        padding-left: 12px;
+        cursor: pointer;
+    }
+    @media (max-width: 950px) {
+        .cart-item_image {
+            img {
+                width: 180px;
+                height: 230px;
+            }
+        }
+        .cart-item_name,
+        .cart-item_quantity,
+        .size,
+        .price {
+            font-size: 17px;
+        }
+    }
+    @media (max-width: 850px) {
+        .cart-item_column_1 {
+            .cart-item_image {
+                img {
+                    width: 230px;
+                    height: 280px;
+                }
+            }
+        }
+        .cart-item_column_2 {
+            display: block;
+            .cart-item_name,
+            .cart-item_quantity,
+            .size,
+            .price {
+                font-size: 20px;
+            }
+            .cart-item_name{
+                font-size: 20px;
+            }  
+            .cart-item_quantity {
+                padding: 0;
+            }
+            .remove-button {
+                padding: 0;
+            }
+        }
+    }
+    @media (max-width: 530px) {
+        flex-wrap: wrap;
+
+        .cart-item_column_1{
+            .cart-item_image {
+                padding: 0;
+                img {
+                    width: 200px;
+                    height: 250px;
+                }
+            }
+        }
+
+    }
+}

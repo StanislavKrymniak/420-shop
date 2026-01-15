@@ -30,10 +30,13 @@ tr.cart-item_container {
 
     .cart-item_name,
     .cart-item_quantity,
-    .size,
-    .price {
+    .size {
         width: 20%;
         padding-left: 10px; 
+    }
+    .price {
+         width: 20%;
+        padding-right: 25px;
     }
 
     .cart-item_quantity {
@@ -81,7 +84,7 @@ tr.cart-item_container {
         grid-template-columns: 120px 1fr; 
         grid-template-rows: auto;
         grid-gap: 5px 15px; 
-        padding: 15px 10px;
+        
         min-height: 0;
 
         grid-template-areas: 
@@ -94,7 +97,7 @@ tr.cart-item_container {
         td.cart-item_cell {
             display: flex; 
             align-items: center;
-            width: 100%; 
+            width: 122px; 
             padding: 5px 0; 
             font-size: 1rem;
 

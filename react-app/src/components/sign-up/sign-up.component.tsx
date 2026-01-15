@@ -64,6 +64,7 @@ export const SignUp = () => {
                     onChange={handleChange} 
                     name='displayName' 
                     value={displayName}
+                    id='signup-displayName'
                 />
                 <FormInput 
                     label='Email'
@@ -72,6 +73,7 @@ export const SignUp = () => {
                     onChange={handleChange} 
                     name='email' 
                     value={email}
+                    id='signup-email'
                 />
                 <FormInput
                     label='Password'
@@ -80,6 +82,7 @@ export const SignUp = () => {
                     onChange={handleChange} 
                     name='password' 
                     value={password}
+                    id='signup-password'
                 />
                 <FormInput 
                     label='Confirm Password'
@@ -88,6 +91,7 @@ export const SignUp = () => {
                     onChange={handleChange} 
                     name='confirmPassword'
                     value={confirmPassword}
+                    id='signup-confirmPassword'
                 />
                 <Button type="submit" >Sign Up</Button>
             </form>

@@ -23,19 +23,19 @@ export const Home = () => {
           <ul className="about_container">
             <li className="about_block">
               <span className="about_block_icon">
-                <img src={detailsVector} alt="Ikona atutu" />
+                <img src={detailsVector} alt='' />
               </span>
               <div className="about_block_text">excellent quality</div>
             </li>
             <li className="about_block">
               <span className="about_block_icon">
-                <img src={detailsVector} alt="Ikona atutu" />
+                <img src={detailsVector} alt='' />
               </span>
               <div className="about_block_text">nice material</div>
             </li>
             <li className="about_block">
               <span className="about_block_icon">
-                <img src={detailsVector} alt="Ikona atutu" />
+                <img src={detailsVector} alt='' />
               </span>
               <div className="about_block_text">worldwide shipping</div>
             </li>

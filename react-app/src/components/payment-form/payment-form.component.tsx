@@ -73,8 +73,12 @@ export const PaymentForm = () => {
                 <li>Zip Code: {checkoutDetails.zipCode}</li>
             </ul>
             <form onSubmit={paymentHandler} className="payment_order">
-                <label htmlFor="card-element" className="visually-hidden">Card Details</label>
-                <CardElement id="card-element" className='payment_card' />
+                
+                <label>
+                    <span className="visually-hidden">Card Details</span>
+                    <CardElement className='payment_card' />
+                </label>
+                
                 <button disabled={isProcessingPayment} className="payment_btn">
                     {isProcessingPayment ? 'Processing...' : 'Pay Now'}
                 </button>

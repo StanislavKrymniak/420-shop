@@ -21,6 +21,7 @@ export const SignIn = () => {
     }
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name , value} = event.target
+        
         setFormFields({...formFields, [name]: value})
     }
 
@@ -52,6 +53,7 @@ export const SignIn = () => {
                     onChange={handleChange} 
                     name='email' 
                     value={email}
+                    id='signin-email'
                 />
                 <FormInput
                     label="Password" 
@@ -60,6 +62,7 @@ export const SignIn = () => {
                     onChange={handleChange} 
                     name='password' 
                     value={password}
+                    id='signin-password'
                 />
                 <div className="buttons-container">
                     <Button type="submit">Sign In</Button>   

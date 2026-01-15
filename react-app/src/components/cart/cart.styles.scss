@@ -60,13 +60,12 @@
         }
     }
     
-    // ----- FIX TUTAJ -----
     @media (max-width: 850px) {
-        // Zmieniamy szerokość na 95%, aby wypełnić ekran mobilny
+        
         width: 95%;
 
         .cart-header {
-            // Ukrywamy nagłówek tabeli na urządzeniach mobilnych (WCAG)
+
             border: 0;
             clip: rect(0 0 0 0);
             height: 1px;
@@ -76,10 +75,15 @@
             position: absolute;
             width: 1px;
         }
+
+        tfoot {
+            display: flex;
+            
+        }
     }
 }
 
-// Klasa pomocnicza WCAG
+
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
